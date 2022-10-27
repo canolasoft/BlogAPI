@@ -27,7 +27,7 @@ class EntradasSerializer(serializers.HyperlinkedModelSerializer):
 	#id_rs = serializers.SlugRelatedField(read_only=True, slug_field='nombre_rs')
 	class Meta:
 		model = Entrada
-		fields = ('id_e', 'id_c', 'nombre_e', 'imagen_e', 'url_e', 'id_tag', 'texto_e')
+		fields = ('id_e', 'id_c', 'nombre_e', 'imagen_e', 'url_e', 'id_tag', 'descripcion_e')
 
 class EntradaSerializer(serializers.HyperlinkedModelSerializer):
 	id_c = serializers.SlugRelatedField(read_only=True, slug_field='nombre_c')

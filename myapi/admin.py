@@ -10,7 +10,7 @@ class RedsocialAdmin(admin.ModelAdmin):
 admin.site.register(Redsocial, RedsocialAdmin)
 
 class EntradaAdmin(admin.ModelAdmin):
-	list_display = ('id_e', 'id_c', 'nombre_e', 'imagen_e', 'url_e', 'id_tag', 'texto_e')
+	list_display = ('id_e', 'id_c', 'nombre_e', 'imagen_e', 'url_e', 'id_tag', 'descripcion_e')
 admin.site.register(Entrada, EntradaAdmin)
 
 class TagAdmin(admin.ModelAdmin):

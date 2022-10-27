@@ -80,7 +80,7 @@ class Entrada(models.Model):
 	id_c = models.ForeignKey(Canal, on_delete=models.SET_NULL, null=True)
 	nombre_e = models.CharField(max_length=100)
 	imagen_e = models.ImageField(null=True, blank=True)
-	texto_e = models.CharField(max_length=1000, null=True)
+	descripcion_e = models.CharField(max_length=200, null=True)
 	url_e = models.CharField(max_length=200, null=True)
 	id_tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True)
 	def __str__(self):
@@ -90,6 +90,22 @@ class Entrada(models.Model):
 	def imageURL(self):
 		try:
 			url = self.imagen_e.url
+		except:
+			url = ''
+		return url
+
+class Texto(models.Model):
+	id_t = models.BigAutoField(primary_key=True)
+	id_c = models.ForeignKey(Entrada, on_delete=models.SET_NULL, null=True)
+	texto_t = models.CharField(max_length=1000, null=True)
+	imagen_t = models.ImageField(null=True, blank=True)
+	def __str__(self):
+		return self.texto_t
+
+	@property
+	def imageURL(self):
+		try:
+			url = self.imagen_t.url
 		except:
 			url = ''
 		return url
