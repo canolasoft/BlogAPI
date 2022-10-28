@@ -44,5 +44,7 @@ urlpatterns = [
 
 	# consulta 5: dame los datos de una entrada (id)
 	path('qry5/', EntradaSerializer.as_view(), name='qry5'),
+
+	path('qry6/', TextoEntradaSerializer.as_view(), name='qry6'),
 ]
 

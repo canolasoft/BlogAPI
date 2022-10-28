@@ -81,3 +81,13 @@ class EntradaSerializer(ListCreateAPIView):
 			id_e = self.request.GET.get('id')
 			entrada = Entrada.objects.filter(id_e = id_e)
 			return entrada
+
+class TextoEntradaSerializer(ListCreateAPIView):
+	serializer_class = TextoEntradaSerializer
+
+	def get_queryset(self):
+		kap = self.request.GET.get('kap')
+		if(Datapp.objects.filter(keyapp = kap)):
+			id_e = self.request.GET.get('id')
+			entrada = Entrada.objects.filter(id_e = id_e)
+			return entrada

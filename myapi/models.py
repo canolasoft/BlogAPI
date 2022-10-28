@@ -96,7 +96,7 @@ class Entrada(models.Model):
 
 class Texto(models.Model):
 	id_t = models.BigAutoField(primary_key=True)
-	id_c = models.ForeignKey(Entrada, on_delete=models.SET_NULL, null=True)
+	id_e = models.ForeignKey(Entrada, on_delete=models.SET_NULL, null=True)
 	texto_t = models.CharField(max_length=1000, null=True)
 	imagen_t = models.ImageField(null=True, blank=True)
 	def __str__(self):

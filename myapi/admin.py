@@ -13,6 +13,10 @@ class EntradaAdmin(admin.ModelAdmin):
 	list_display = ('id_e', 'id_c', 'nombre_e', 'imagen_e', 'url_e', 'id_tag', 'descripcion_e')
 admin.site.register(Entrada, EntradaAdmin)
 
+class TextoAdmin(admin.ModelAdmin):
+	list_display = ('id_t', 'id_e', 'texto_t', 'imagen_t')
+admin.site.register(Texto, TextoAdmin)
+
 class TagAdmin(admin.ModelAdmin):
 	list_display = ('id_tag', 'genero_tag', 'idioma_tag', 'imagen_tag')
 admin.site.register(Tag, TagAdmin)

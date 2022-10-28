@@ -1,4 +1,5 @@
 # serializers.py
+from typing import Text
 from rest_framework import serializers
 from myapi.models import *
 
@@ -35,6 +36,12 @@ class EntradaSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Entrada
 		fields = ('id_e', 'id_c', 'nombre_e', 'imagen_e', 'url_e', 'id_tag')
+
+class TextoEntradaSerializer(serializers.HyperlinkedModelSerializer):
+	id_e = serializers.SlugRelatedField(read_only=True, slug_field='nombre_e')
+	class Meta:
+		model = Texto
+		fields = ('id_e', 'id_t', 'texto_t', 'imagen_t')
 
 #class RedsocialArtistaSerializer(serializers.ModelSerializer):
 #	id_a = serializers.SlugRelatedField(read_only=True, slug_field='nombre_a')
