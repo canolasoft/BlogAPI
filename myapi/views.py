@@ -67,8 +67,8 @@ class RedsocialSerializer(ListCreateAPIView):
 	def get_queryset(self):
 		kap = self.request.GET.get('kap')
 		if(Datapp.objects.filter(keyapp = kap)):
-			id_a = self.request.GET.get('id')
-			redesociales = Redsocial.objects.filter(id_a__id_a = id_a)
+			id_c = self.request.GET.get('id')
+			redesociales = Redsocial.objects.filter(id_c__id_c = id_c)
 			return redesociales
 
 # Consulta 5: dame los datos de un Video
