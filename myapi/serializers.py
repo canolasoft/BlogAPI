@@ -38,7 +38,7 @@ class EntradaSerializer(serializers.HyperlinkedModelSerializer):
 		fields = ('id_e', 'id_c', 'nombre_e', 'imagen_e', 'url_e', 'id_tag')
 
 class TextoEntradaSerializer(serializers.HyperlinkedModelSerializer):
-	id_e = serializers.SlugRelatedField(read_only=True, slug_field='nombre_e')
+	id_e = serializers.SlugRelatedField(read_only=True, slug_field='id_e')
 	class Meta:
 		model = Texto
 		fields = ('id_e', 'id_t', 'texto_t', 'imagen_t')

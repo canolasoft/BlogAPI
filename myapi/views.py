@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 import django_filters
+import logging
 from django.shortcuts import render
 from .serializers import *
 from .models import *
@@ -84,10 +85,11 @@ class EntradaSerializer(ListCreateAPIView):
 
 class TextoEntradaSerializer(ListCreateAPIView):
 	serializer_class = TextoEntradaSerializer
-
 	def get_queryset(self):
 		kap = self.request.GET.get('kap')
 		if(Datapp.objects.filter(keyapp = kap)):
 			id_e = self.request.GET.get('id')
-			entrada = Entrada.objects.filter(id_e = id_e)
-			return entrada
+			logging.error("id_e: "+id_e)
+			#entrada = Entrada.objects.filter(id_e = id_e).first()
+			textos = Texto.objects.filter(id_e = id_e)
+			return textos
