@@ -15,12 +15,6 @@ class DatappViewSet(viewsets.ModelViewSet):
 		kap = self.request.GET.get('kap')
 		return Datapp.objects.filter(keyapp = kap)
 
-# index de prueba (muestra todos los canales)
-def index(request):
-	canales = Canal.objects.all().order_by('nombre_c')
-	context = {'canales':canales}
-	return render(request, "landing/index.html", context)
-
 # Consulta 1: dame todos los Canales
 class CanalesViewSet(viewsets.ModelViewSet):
 	serializer_class = CanalSerializer
@@ -93,3 +87,25 @@ class TextoEntradaSerializer(ListCreateAPIView):
 			#entrada = Entrada.objects.filter(id_e = id_e).first()
 			textos = Texto.objects.filter(id_e = id_e)
 			return textos
+
+#### LANDING
+
+# Home index: muestra todos los canales
+def index(request):
+	canales = Canal.objects.all().order_by('nombre_c')
+	context = {'canales':canales}
+	return render(request, "landing/index.html", context)
+
+# Canal: muestra los datos y entradas de un canal
+def canal(request):
+	id_c = request.GET.get('id')
+	canal = Canal.objects.filter(id_c = id_c).first
+	#logger.error("canal: "+str(canal))
+	entradas = Entrada.objects.filter(id_c = id_c)
+	textos = Texto.objects.filter(id_e__id_c = id_c)
+	context = {
+		'canal':canal,
+        'entradas':entradas,
+        'textos':textos,
+        }
+	return render(request, "landing/canal.html", context)

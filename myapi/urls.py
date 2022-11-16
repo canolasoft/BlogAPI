@@ -17,15 +17,10 @@ Including another URLconf
 from django.urls import include, path
 #from rest_framework import routers
 from myapi.views import *
-from myapi import views
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-	############# index
-	path('index/', views.index, name='index'),
-	path('', views.index),
-
 	############# serializers
 	# consulta 0: dame los Datos de la app
 	path('qry0/', DatappViewSet.as_view({'get': 'list'}), name='qry0'),
@@ -47,5 +42,13 @@ urlpatterns = [
 
 	# consulta 6: dame todos los textos de una entrada (id)
 	path('qry6/', TextoEntradaSerializer.as_view(), name='qry6'),
+
+
+	############# LANDING
+	# Home index
+	path('', index, name=""),
+
+	# Canal
+	path('canal', canal, name="canal"),
 ]
 
